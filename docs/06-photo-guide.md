@@ -48,25 +48,24 @@ Two photos per plug: face-on (pins visible) and from the side (wire colours visi
 - Whether the console shows anything right after plugging the mains adapter in, without pedalling.
 
 ## Multimeter procedure (AM33D), can be done right away
-Needs the console plugged in and powered, and access to the metal of the 4 contacts. On JST SM
-plugs the easiest access is from the back of the housing, where the wires enter: slide a sewing
-needle or a thin pin along each wire into the housing until it touches the crimp contact, then clip
-the meter lead to the needle. Alternatively order 4-pin JST SM pigtail pairs and build a Y-extension
-(the same parts later become the ESP32 adapter).
+Safe as long as the meter is in **V DC** (10 MΩ load, cannot harm either board) and a probe never
+bridges two neighbouring contacts. Never use the A (current) or Ω/continuity ranges on a live circuit.
+Cleanest: **unplug the console** and measure on the **column-side** plug; the 5 V comes from the base
+and is present without the console, so nothing on the console can be damaged. Clip the black lead to
+one wire (needle or bent paper clip into the contact), probe one contact at a time with the red lead.
+Known from the board labels: green = 5V, red = DOUT; yellow/black = GND and speed in unknown order.
 
-1. Mains adapter in, console shows something. Meter on **DC V, 20 V range**.
-2. Measure all six wire pairs (red–black, red–yellow, red–green, yellow–black, yellow–green, green–black).
-   Write down every reading with sign. The wire that is negative against all the others is **GND**.
-   The wire with the largest steady positive voltage against GND is the **supply** (expect 5 V or
-   something between 9 and 35 V). If a reading is unstable, switch to **AC V** and read again: an AC
-   reading of ~26 V means the console gets raw AC.
-3. Black lead on GND, red lead on each of the two remaining wires. Turn the pedals slowly by hand:
-   the wire that flips between ~0 V and a few volts once per revolution is the **speed** signal.
-4. Black lead on GND, red lead on the last wire. Change resistance level 1 → 8 → 16 on the console
-   (pedal if it needs motion to apply the level). The DC reading that changes with the level is the
-   **brake command**; note the value at each level. A reading that rises smoothly is PWM or analog,
-   a reading that only flickers is probably serial data (then the ESP32 sniffer is needed).
-5. Meter on **Ω**, mains out, console unplugged: measure speed wire to GND on the **column side** while
-   turning the pedals. A reed switch shows ∞ most of the time and ~0 Ω briefly once per revolution.
+1. Mains adapter in, console unplugged. Meter on **DC V, 20 V range**.
+2. Black lead clipped to **yellow**, red lead on **green**. About **+5 V** → yellow is **GND**, black is speed.
+   About 0 V or a strange value → move the black lead to the **black** wire and repeat; +5 V → black is GND.
+   Write down the exact supply voltage.
+3. Black lead on GND, red lead on the remaining (speed) wire. Turn the pedals slowly by hand: the reading
+   should jump between ~0 V and ~5 V once per revolution (or sit at one level and blip). Note which.
+4. Black lead on GND, red lead on **red (DOUT)** with the console unplugged: this shows the idle level the
+   brake board sees without a console (pull-up/pull-down on the board).
+5. Optional, console plugged in again (back-probe at the wire entry): red lead on DOUT, step the console
+   through levels 1 → 8 → 16 and pedal. A DC reading that changes with the level is the PWM average.
+6. Mains out, console unplugged: meter on **Ω**, speed wire to GND on the column side while turning the
+   pedals. A reed switch shows ∞ most of the time and ~0 Ω briefly once per revolution.
 
 Result table goes into `03-hardware-reference.md` section 5.

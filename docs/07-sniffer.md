@@ -25,12 +25,39 @@ The ÷11 divider reads a 5 V line as 0.45 V at the pin, which the 12-bit ADC sti
 35 V line at 3.2 V. The 10k/15k divider keeps 5 V logic at 3 V for the digital inputs. If the "5V" wire
 is confirmed as 5 V, the ADC divider can be changed to 10k/15k (ratio 1.667) with the `div 1.667` command.
 
+## One adapter board for sniffing *and* the final device
+The same ESP32 DevKit and the same pin plan serve both roles; only a jumper changes. Build it on a
+small perfboard that sits next to the DevKit:
+
+```
+column plug (4-pin JST SM female) ──┬── console pass-through (4-pin JST SM male)   [console plugged in only while sniffing]
+   green  5V  ──┬── Schottky (e.g. 1N5819) ──► ESP32 "5V"/VIN pin
+                └── 100k ─┬─► GPIO34 (ADC A, supply monitor)          10k to GND
+   yellow/black GND ───── ESP32 GND  (which one is GND: measured in session 3)
+   speed ──── 10k ─┬─► GPIO26 (speed input, internal pull-up on)      15k to GND
+   red    DOUT ─── 10k ─┬─► GPIO25 (capture; listens to the console or to our own output)   15k to GND
+          DOUT ◄── [JUMPER J1] ◄── collector of NPN (BC547/2N3904), 4.7k pull-up from collector to 5V,
+                                   base ◄── 1k ◄── GPIO27 (PWM out; inverted in software)
+```
+- **Sniff mode:** J1 open, console plugged into the pass-through, ESP32 on USB or machine 5 V. The ESP32 only
+  listens (GPIO25/26/34).
+- **Drive mode (final):** console unplugged, J1 closed, ESP32 powered from the machine 5 V. GPIO27 drives
+  DOUT through the transistor; GPIO25 still captures what is on the line, giving a built-in self-check.
+- Never close J1 with the console attached: two drivers on one line.
+- The NPN stage inverts: 100 % duty at GPIO27 = DOUT low. The firmware's `pwm` command gets an `inv`
+  option for this; the final firmware does the inversion internally.
+- If session 4 shows the brake board is happy with 3.3 V logic, the transistor stage can be replaced by a
+  direct 100 Ω series link; keep the jumper either way.
+- 5 V budget: measure the current the ESP32 draws (≈ 100–150 mA with BLE) against what the 5 V line can
+  supply (session 4, with a 1 Ω shunt or the AM33D in mA mode in series on the green wire).
+
 ## Probe harness (what to build or order)
 - 2 pairs 4-pin **JST SM 2.5 mm** connector pigtails (male + female). One pair makes the **Y-probe lead**:
   female ↔ male pass-through for the console, plus a 4-wire tap to a breadboard. The second pair is for the
   later ESP32 adapter lead.
-- Resistors: 4× 100 kΩ, 8× 10 kΩ, 4× 15 kΩ (1/4 W, any tolerance).
-- Breadboard, Dupont wires, a USB cable for the ESP32.
+- Resistors: 4× 100 kΩ, 8× 10 kΩ, 4× 15 kΩ, 1× 4.7 kΩ, 1× 1 kΩ (1/4 W, any tolerance).
+- 1× NPN transistor BC547 or 2N3904, 1× Schottky diode 1N5819, 1× 2-pin header + jumper.
+- Small perfboard, breadboard for the first tests, Dupont wires, a USB cable for the ESP32.
 - Optional but recommended: a cheap 8-channel USB logic analyzer (Saleae-clone, ~10 €) as a cross-check.
 
 ## Report line

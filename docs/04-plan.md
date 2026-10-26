@@ -36,7 +36,7 @@ stage on the board-91 coil connector. Still swappable if done with a plug adapte
 - Power: buck converter from the console supply line (whatever Phase 1 finds) to 5 V/3.3 V.
 - Level shifting: dividers for inputs > 3.3 V; transistor or logic-level MOSFET / RC filter + op-amp for the
   brake command if the board expects 5 V logic or an analog level.
-- Build an adapter lead with the mating connector so either the console or the ESP32 is plugged into the SENSOR plug (plug swap, never both).
+- The adapter board from `07-sniffer.md` is the final hardware: pass-through for the console while sniffing, jumper J1 for drive mode (plug swap, never both drivers).
 - Deliverable: `docs/wiring.md` with a schematic, BOM and photos.
 
 ## Phase 3 – Software (ESP32)
