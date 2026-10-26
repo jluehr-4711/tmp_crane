@@ -4,7 +4,24 @@ Prices are what the shops showed on 2026-10-26, net of shipping; Reichelt articl
 Amazon entries are listings found by search (check the price on the page). You already have the
 classic ESP32 DevKit, the AM33D multimeter and a USB cable.
 
-## Reichelt (reichelt.de, search for the article number)
+## Recommended: one order at Amazon.de (everything in one parcel, free shipping above 39 €)
+Reichelt and Conrad lack the JST SM connectors and the logic analyzer, so a single order is only
+possible at Amazon (or eBay with several sellers, which splits shipping again). Amazon sells the
+passives as multipacks; the spares are harmless. Amazon blocks automated price checks, so these are
+search terms with typical prices, not verified listings; pick well-rated sellers.
+| # | Search on amazon.de | Pick | ≈ € |
+|---|---------------------|------|----:|
+| 1 | "JST SM 4 Pin Stecker Buchse Kabel 2,5mm" | 10–15 pairs, 22 AWG, ~15 cm (e.g. Lyeteung 15 pairs, or dp/B0GYJWPB7P with 4p) | 8 |
+| 2 | "USB Logic Analyzer 24MHz 8 Kanal" | dp/B08MXZYMJ5 (Fafeicy) or AZ-Delivery; PulseView-compatible | 13 |
+| 3 | "Widerstand Sortiment 1/4W Metallschicht" | any 500–1000-piece E12/E24 kit that lists 1k, 4.7k, 10k, 15k, 100k | 10 |
+| 4 | "BC547 Transistor 50 Stück" | 50-piece pack BC547B/C | 5 |
+| 5 | "1N5819 Schottky Diode 50 Stück" | 20–100-piece pack | 5 |
+| 6 | "Stiftleiste 2,54mm 40 Pin 10 Stück" + "Jumper Kappen 2,54" | one header pack, one jumper pack (often sold together as "Jumper Set") | 6 |
+| 7 | "Lochrasterplatine 5x7 cm 10 Stück" | double-sided prototype PCB set | 6 |
+| 8 | "Breadboard 830 Jumper Wire Set" | 830-point breadboard + 120 Dupont wires combo | 10 |
+Total ≈ 60 €, one parcel, no shipping. Without the logic analyzer ≈ 47 €.
+
+## Alternative A: Reichelt (reichelt.de, search for the article number)
 | Qty | Article no. | Item | Unit € | Use |
 |----:|-------------|------|-------:|-----|
 | 2 | `BC 547B` | NPN transistor TO-92 | 0.04 | DOUT driver stage (one spare) |
@@ -25,7 +42,7 @@ Subtotal ≈ 13 €, plus shipping (≈ 6 €). Alternative to the single resist
 Reichelt has **no** JST SM connectors (its "JST SM02B" hit is a different 3.5 mm series) and no cheap
 logic analyzer (only a 108 € USB scope), so those come from Amazon.
 
-## Amazon.de
+## Alternative B: Amazon.de items only for the Reichelt route
 | Qty | Item | Listing | Price |
 |----:|------|---------|-------|
 | 1 set | **JST SM 4-pin male + female pigtail pairs, 2.5 mm pitch, 22 AWG, ~15 cm** (sets of 10–15 pairs; we need 2 pairs, the rest are spares/for a second lead) | search "JST SM 4 Pin Stecker Buchse Kabel"; e.g. "Lyeteung 15 Paar JST SM 4 Pin Steckverbinder 150 mm 22AWG", or the 2/3/4-pin selectable set https://www.amazon.de/dp/B0GYJWPB7P (choose 4p) | ≈ 7–10 € |
@@ -34,7 +51,7 @@ logic analyzer (only a 108 € USB scope), so those come from Amazon.
 
 Alternative for the analyzer: AZ-Delivery "Logic Analyzer 8 CH 24 MHz", 13.99 €, same hardware.
 
-## Conrad (conrad.de) – only useful locally if you are near Wernberg-Köblitz (DE) or Linz (AT)
+## Alternative C: Conrad (conrad.de) – only useful locally if you are near Wernberg-Köblitz (DE) or Linz (AT)
 Conrad closed its other retail stores (2022/23); everything else is online with parcel delivery.
 Found by search on 2026-10-26; Conrad's site blocks automated access, so prices and in-store stock
 could not be checked. Order numbers are from the product URLs.
