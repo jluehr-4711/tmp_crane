@@ -9,35 +9,38 @@ Reichelt and Conrad lack the JST SM connectors and the logic analyzer, so a sing
 possible at Amazon (or eBay with several sellers, which splits shipping again). Amazon sells the
 passives as multipacks; the spares are harmless. Amazon blocks automated price checks, so these are
 search terms with typical prices, not verified listings; pick well-rated sellers.
-| # | Search on amazon.de | Pick | ≈ € |
-|---|---------------------|------|----:|
-| 1 | "JST SM 4 Pin Stecker Buchse Kabel 2,5mm" | 10–15 pairs, 22 AWG, ~15 cm (e.g. Lyeteung 15 pairs, or dp/B0GYJWPB7P with 4p) | 8 |
-| 2 | "USB Logic Analyzer 24MHz 8 Kanal" | dp/B08MXZYMJ5 (Fafeicy) or AZ-Delivery; PulseView-compatible | 13 |
-| 3 | "Widerstand Sortiment 1/4W Metallschicht" | any 500–1000-piece E12/E24 kit that lists 1k, 4.7k, 10k, 15k, 100k | 10 |
-| 4 | "BC547 Transistor 50 Stück" | 50-piece pack BC547B/C | 5 |
-| 5 | "1N5819 Schottky Diode 50 Stück" | 20–100-piece pack | 5 |
-| 6 | "Stiftleiste 2,54mm 40 Pin 10 Stück" + "Jumper Kappen 2,54" | one header pack, one jumper pack (often sold together as "Jumper Set") | 6 |
-| 7 | "Lochrasterplatine 5x7 cm 10 Stück" | double-sided prototype PCB set | 6 |
-| 8 | "Breadboard 830 Jumper Wire Set" | 830-point breadboard + 120 Dupont wires combo | 10 |
+| # | Item | Link | ≈ € |
+|---|------|------|----:|
+| 1 | JST SM 4-pin male+female pigtail pairs, 2.5 mm, 22 AWG, ~15 cm, 10–15 pairs | product: https://www.amazon.de/dp/B0GYJWPB7P (choose the 4p variant) · search: https://www.amazon.de/s?k=JST+SM+4+Pin+Stecker+Buchse+Kabel+2%2C5mm | 8 |
+| 2 | USB logic analyzer 8 ch 24 MHz (PulseView/fx2lafw) | product: https://www.amazon.de/dp/B08MXZYMJ5 (13.35 € on 2026-10-26) | 13 |
+| 3 | Resistor assortment 1/4 W, must include 1k, 4.7k, 10k, 15k, 100k | search: https://www.amazon.de/s?k=Widerstand+Sortiment+1%2F4W+Metallschicht+Kit | 10 |
+| 4 | BC547 NPN transistor, pack of 50 | search: https://www.amazon.de/s?k=BC547+Transistor+50+St%C3%BCck | 5 |
+| 5 | 1N5819 Schottky diode, pack of 20–100 | search: https://www.amazon.de/s?k=1N5819+Schottky+Diode | 5 |
+| 6 | Pin header 2.54 mm 40-pin (pack) + jumper caps | search: https://www.amazon.de/s?k=Stiftleiste+2%2C54mm+40+Pin+Jumper+Kappen+Set | 6 |
+| 7 | Prototype PCB 5 × 7 cm, set of 10 | search: https://www.amazon.de/s?k=Lochrasterplatine+5x7+cm+10+St%C3%BCck | 6 |
+| 8 | Breadboard 830 + 120 Dupont jumper wires (e.g. AZDelivery kit) | search: https://www.amazon.de/s?k=Breadboard+830+Jumper+Wire+Set+120 | 10 |
+
+Only links 1 and 2 are verified product pages; Amazon blocks automated lookups, so 3–8 are search links
+that open the result list (pick a well-rated seller, "Prime" or ≥ 39 € total for free shipping).
 Total ≈ 60 €, one parcel, no shipping. Without the logic analyzer ≈ 47 €.
 
-## Alternative A: Reichelt (reichelt.de, search for the article number)
+## Alternative A: Reichelt (reichelt.de; article numbers are links to the product pages)
 | Qty | Article no. | Item | Unit € | Use |
 |----:|-------------|------|-------:|-----|
-| 2 | `BC 547B` | NPN transistor TO-92 | 0.04 | DOUT driver stage (one spare) |
-| 2 | `1N 5819` | Schottky diode 40 V 1 A DO-41 | 0.04 | 5 V feed into the ESP32 |
-| 5 | `1/4W 100K` | carbon film resistor 100 kΩ 0.25 W | 0.09 | ADC dividers (top) |
-| 10 | `1/4W 10K` | 10 kΩ | 0.10 | dividers (bottom / series) |
-| 5 | `1/4W 15K` | 15 kΩ | 0.09 | logic-input dividers |
-| 2 | `1/4W 4,7K` | 4.7 kΩ | 0.11 | pull-up at the transistor collector |
-| 2 | `1/4W 1,0K` | 1 kΩ | 0.09 | base resistor |
-| 1 | `SL 1X36G 2,54` | 36-pin header strip | 0.25 | jumper J1, test points |
-| 5 | `JUMPER 2,54 SW` | jumper cap | 0.02 | J1 |
-| 2 | `H25PR050` | perfboard 50 × 100 mm, 2.54 mm | 1.11 | the adapter board |
-| 1 | `STECKBOARD 1K2V` | breadboard 640 + 200 contacts | 3.35 | first tests, the DevKit plugs in |
-| 1 | `STECKBOARD DBS` | 140-piece wire-bridge set | 4.12 | breadboard wiring |
+| 2 | [`BC 547B`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=5006) | NPN transistor TO-92 | 0.04 | DOUT driver stage (one spare) |
+| 2 | [`1N 5819`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=41850) | Schottky diode 40 V 1 A DO-41 | 0.04 | 5 V feed into the ESP32 |
+| 5 | [`1/4W 100K`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=1337) | carbon film resistor 100 kΩ 0.25 W | 0.09 | ADC dividers (top) |
+| 10 | [`1/4W 10K`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=1338) | 10 kΩ | 0.10 | dividers (bottom / series) |
+| 5 | [`1/4W 15K`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=1356) | 15 kΩ | 0.09 | logic-input dividers |
+| 2 | [`1/4W 4,7K`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=1425) | 4.7 kΩ | 0.11 | pull-up at the transistor collector |
+| 2 | [`1/4W 1,0K`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=1315) | 1 kΩ | 0.09 | base resistor |
+| 1 | [`SL 1X36G 2,54`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=19504) | 36-pin header strip | 0.25 | jumper J1, test points |
+| 5 | [`JUMPER 2,54 SW`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=9017) | jumper cap | 0.02 | J1 |
+| 2 | [`H25PR050`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=8268) | perfboard 50 × 100 mm, 2.54 mm | 1.11 | the adapter board |
+| 1 | [`STECKBOARD 1K2V`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=67678) | breadboard 640 + 200 contacts | 3.35 | first tests, the DevKit plugs in |
+| 1 | [`STECKBOARD DBS`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=79056) | 140-piece wire-bridge set | 4.12 | breadboard wiring |
 
-Subtotal ≈ 13 €, plus shipping (≈ 6 €). Alternative to the single resistors: `K/RES-E12`,
+Subtotal ≈ 13 €, plus shipping (≈ 6 €). Alternative to the single resistors: [`K/RES-E12`](https://www.reichelt.de/index.html?ACTION=3&ARTICLE=119272),
 610-piece E12 assortment, 7.27 €, if you want a stock for later.
 Reichelt has **no** JST SM connectors (its "JST SM02B" hit is a different 3.5 mm series) and no cheap
 logic analyzer (only a 108 € USB scope), so those come from Amazon.
