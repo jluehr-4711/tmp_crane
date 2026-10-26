@@ -13,6 +13,7 @@ Aldi Süd 2006) with an ESP32, while keeping the original console swappable.
 | [06-photo-guide.md](06-photo-guide.md) | What to photograph before the measurement session, with plain-language locations |
 | [07-sniffer.md](07-sniffer.md) | Sniffer firmware: pin map, dividers, parts list, usage |
 | [08-prior-art.md](08-prior-art.md) | Existing projects (Reebok 5.7e etc.), what we reuse, what we must still measure |
+| [09-shopping-list.md](09-shopping-list.md) | Parts with Reichelt article numbers and Amazon listings |
 | [sessions/](sessions/) | One log per session, newest last |
 | [reference/](reference/) | Extracted manual text (greppable) |
 | [img/](img/) | Crops and rendered manual pages used by the docs |

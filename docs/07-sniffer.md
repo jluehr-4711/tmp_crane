@@ -52,6 +52,7 @@ column plug (4-pin JST SM female) ──┬── console pass-through (4-pin JS
   supply (session 4, with a 1 Ω shunt or the AM33D in mA mode in series on the green wire).
 
 ## Probe harness (what to build or order)
+Concrete shop list with article numbers: `09-shopping-list.md`.
 - 2 pairs 4-pin **JST SM 2.5 mm** connector pigtails (male + female). One pair makes the **Y-probe lead**:
   female ↔ male pass-through for the console, plus a 4-wire tap to a breadboard. The second pair is for the
   later ESP32 adapter lead.

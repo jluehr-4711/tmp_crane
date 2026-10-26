@@ -7,7 +7,7 @@ Wiring first, then software. Each phase ends with a documented result.
 - [x] Owner answered the key questions (`05-open-questions.md`): console works, multimeter + ESP32 only, attach at console plug, BLE FTMS.
 - [x] Owner: classic ESP32, AM33D meter. Column top = 2x PULS + 1x 4-pin SENSOR (the console link).
 - [ ] Owner: pin order of the SENSOR plug, PCB photo at the cable entry; multimeter readings per `06-photo-guide.md`.
-- [ ] Owner: order the parts listed in `07-sniffer.md` (JST SM 4-pin pigtails, resistors, breadboard).
+- [ ] Owner: order the parts in `09-shopping-list.md` (Reichelt + Amazon).
 - [x] Session 2: sniffer firmware written and built (`firmware/sniffer/`, `07-sniffer.md`).
 - [ ] Bench test of the sniffer (GPIO27 → GPIO25 loop) before session 4.
 
