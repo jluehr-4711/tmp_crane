@@ -13,3 +13,4 @@ hardware/kicad/out/
 hardware/kicad/erc.txt
 hardware/kicad/adapter.png
 hardware/kicad/*-backups/
+hardware/perfboard/layout.png
