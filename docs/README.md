@@ -16,7 +16,7 @@ Aldi Süd 2006) with an ESP32, while keeping the original console swappable.
 | [09-shopping-list.md](09-shopping-list.md) | Parts with Reichelt article numbers and Amazon listings |
 | [sessions/](sessions/) | One log per session, newest last |
 | [reference/](reference/) | Extracted manual text (greppable) |
-| [img/](img/) | Crops and rendered manual pages used by the docs |
+| [img/](img/) | Crops, rendered manual pages, and `hardware-setup.svg` (overall wiring diagram) |
 | [../firmware/](../firmware/) | ESP-IDF projects (sniffer) |
 
 ## Conventions

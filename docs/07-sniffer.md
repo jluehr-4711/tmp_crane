@@ -26,6 +26,9 @@ The ÷11 divider reads a 5 V line as 0.45 V at the pin, which the 12-bit ADC sti
 is confirmed as 5 V, the ADC divider can be changed to 10k/15k (ratio 1.667) with the `div 1.667` command.
 
 ## One adapter board for sniffing *and* the final device
+![hardware setup](img/hardware-setup.svg)
+
+(`img/hardware-setup.svg`, PNG copy alongside.)
 The same ESP32 DevKit and the same pin plan serve both roles; only a jumper changes. Build it on a
 small perfboard that sits next to the DevKit:
 

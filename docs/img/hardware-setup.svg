@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="760" viewBox="0 0 1240 760" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker>
+    <style>
+      .box{fill:#fff;stroke:#333;stroke-width:1.5}
+      .zone{fill:#f4f6f8;stroke:#9aa5b1;stroke-width:1;stroke-dasharray:6 4}
+      .t{fill:#222}
+      .h{font-weight:bold;font-size:15px;fill:#222}
+      .s{font-size:11px;fill:#555}
+      .w{stroke-width:2.5;fill:none}
+      .sig{stroke:#333;stroke-width:1.5;fill:none}
+      .pin{font-family:monospace;font-size:12px;fill:#222}
+    </style>
+  </defs>
+  <rect width="1240" height="760" fill="#fff"/>
+  <text x="20" y="30" class="h" font-size="20">Crosstrainer ESP32 control – hardware setup (sniff mode and drive mode)</text>
+  <text x="20" y="50" class="s">Power X6 / Royalbeach 33821. Wire colours as found on the console board (green = 5V, red = DOUT; yellow/black = GND + speed, order to be measured).</text>
+
+  <!-- ===== Zone: machine base ===== -->
+  <rect x="20" y="80" width="330" height="640" class="zone"/>
+  <text x="32" y="102" class="h">Machine base (original, untouched)</text>
+
+  <rect x="40" y="120" width="140" height="56" class="box"/>
+  <text x="48" y="140" class="t">AC-AC adapter (104)</text>
+  <text x="48" y="156" class="s">230 V~ in</text>
+  <text x="48" y="170" class="s">26 V~ / 2.5 A out</text>
+
+  <rect x="40" y="220" width="290" height="150" class="box"/>
+  <text x="48" y="240" class="t">Brake control board (91)</text>
+  <text x="48" y="256" class="s">rectifier + 5 V regulator [assumption]</text>
+  <text x="48" y="270" class="s">coil driver (PWM in → coil current)</text>
+  <line x1="110" y1="176" x2="110" y2="220" class="sig" marker-end="url(#arr)"/>
+  <text x="118" y="200" class="s">socket (61), no polarity</text>
+
+  <rect x="200" y="400" width="130" height="56" class="box"/>
+  <text x="208" y="420" class="t">Eddy-current brake</text>
+  <text x="208" y="436" class="s">coil on flywheel (60)</text>
+  <text x="208" y="450" class="s">16 levels, ≤ 400 W</text>
+  <line x1="265" y1="370" x2="265" y2="400" class="sig" marker-end="url(#arr)"/>
+
+  <rect x="40" y="400" width="130" height="56" class="box"/>
+  <text x="48" y="420" class="t">Speed sensor (92)</text>
+  <text x="48" y="436" class="s">reed/Hall + magnet (54)</text>
+  <text x="48" y="450" class="s">pulses/rev: to measure</text>
+  <line x1="105" y1="400" x2="105" y2="370" class="sig" marker-end="url(#arr)"/>
+
+  <!-- cable 90 up the frame -->
+  <text x="48" y="500" class="t">Computer cable (90) → (89) inside the column</text>
+  <text x="48" y="516" class="s">4 wires, end in the 4-pin "SENSOR" plug (plug A)</text>
+  <line x1="180" y1="370" x2="180" y2="540" class="sig"/>
+  <line x1="180" y1="540" x2="350" y2="540" class="sig" marker-end="url(#arr)"/>
+
+  <!-- 4 wires detail -->
+  <g>
+    <line x1="200" y1="560" x2="350" y2="560" class="w" stroke="#2e8b57"/>
+    <text x="205" y="575" class="pin">green  = 5V (from base)</text>
+    <line x1="200" y1="595" x2="350" y2="595" class="w" stroke="#d62728"/>
+    <text x="205" y="610" class="pin">red    = DOUT (brake cmd)</text>
+    <line x1="200" y1="630" x2="350" y2="630" class="w" stroke="#e0c020"/>
+    <text x="205" y="645" class="pin">yellow = GND or speed</text>
+    <line x1="200" y1="665" x2="350" y2="665" class="w" stroke="#222"/>
+    <text x="205" y="680" class="pin">black  = speed or GND</text>
+  </g>
+
+  <!-- ===== Zone: adapter board ===== -->
+  <rect x="380" y="80" width="520" height="640" class="zone"/>
+  <text x="392" y="102" class="h">Adapter board (perfboard, JST SM 4-pin female + male pass-through)</text>
+
+  <!-- plug A -->
+  <rect x="380" y="530" width="60" height="160" class="box" fill="#eee"/>
+  <text x="385" y="548" class="s">plug A</text>
+  <text x="385" y="562" class="s">4-pin</text>
+  <text x="385" y="576" class="s">JST SM</text>
+  <circle cx="410" cy="560" r="4" fill="#2e8b57"/>
+  <circle cx="410" cy="595" r="4" fill="#d62728"/>
+  <circle cx="410" cy="630" r="4" fill="#e0c020"/>
+  <circle cx="410" cy="665" r="4" fill="#222"/>
+
+  <!-- pass-through to console -->
+  <rect x="700" y="560" width="190" height="120" class="box"/>
+  <text x="708" y="580" class="t">Console pass-through</text>
+  <text x="708" y="596" class="s">4-pin JST SM male</text>
+  <text x="708" y="612" class="s">Console (1) plugged in</text>
+  <text x="708" y="626" class="s">only in SNIFF mode.</text>
+  <text x="708" y="648" class="s">All 4 wires 1:1.</text>
+  <line x1="440" y1="560" x2="700" y2="560" class="w" stroke="#2e8b57"/>
+  <line x1="440" y1="595" x2="700" y2="595" class="w" stroke="#d62728"/>
+  <line x1="440" y1="630" x2="700" y2="630" class="w" stroke="#e0c020"/>
+  <line x1="440" y1="665" x2="700" y2="665" class="w" stroke="#222"/>
+
+  <!-- 5V branch: schottky + ADC divider -->
+  <line x1="520" y1="560" x2="520" y2="150" class="w" stroke="#2e8b57"/>
+  <line x1="520" y1="150" x2="520" y2="135" class="sig"/>
+  <rect x="480" y="120" width="80" height="30" class="box"/>
+  <text x="486" y="140" class="pin">D1 1N5819</text>
+  <line x1="560" y1="135" x2="930" y2="135" class="sig" marker-end="url(#arr)"/>
+  <text x="600" y="130" class="s">≈ 4.7 V → ESP32 5V/VIN (DRIVE mode power; USB while sniffing)</text>
+
+  <line x1="520" y1="200" x2="600" y2="200" class="sig"/>
+  <rect x="600" y="186" width="60" height="28" class="box"/>
+  <text x="606" y="205" class="pin">100k</text>
+  <line x1="660" y1="200" x2="720" y2="200" class="sig"/>
+  <rect x="690" y="214" width="60" height="28" class="box"/>
+  <text x="700" y="233" class="pin">10k</text>
+  <line x1="720" y1="200" x2="720" y2="214" class="sig"/>
+  <line x1="720" y1="242" x2="720" y2="262" class="sig"/>
+  <text x="712" y="276" class="pin">GND</text>
+  <line x1="720" y1="200" x2="930" y2="200" class="sig" marker-end="url(#arr)"/>
+  <text x="760" y="195" class="s">supply monitor (÷11)</text>
+
+  <!-- DOUT branch: capture divider -->
+  <line x1="560" y1="595" x2="560" y2="330" class="w" stroke="#d62728"/>
+  <line x1="560" y1="330" x2="600" y2="330" class="sig"/>
+  <rect x="600" y="316" width="60" height="28" class="box"/>
+  <text x="610" y="335" class="pin">10k</text>
+  <line x1="660" y1="330" x2="720" y2="330" class="sig"/>
+  <rect x="690" y="344" width="60" height="28" class="box"/>
+  <text x="700" y="363" class="pin">15k</text>
+  <line x1="720" y1="330" x2="720" y2="344" class="sig"/>
+  <line x1="720" y1="372" x2="720" y2="392" class="sig"/>
+  <text x="712" y="406" class="pin">GND</text>
+  <line x1="720" y1="330" x2="930" y2="330" class="sig" marker-end="url(#arr)"/>
+  <text x="760" y="325" class="s">capture (5 V → 3 V)</text>
+
+  <!-- DOUT driver: NPN + jumper -->
+  <rect x="480" y="420" width="190" height="90" class="box"/>
+  <text x="488" y="438" class="t">DOUT driver (DRIVE mode)</text>
+  <text x="488" y="454" class="pin">Q1 BC547, base ← 1k ← GPIO27</text>
+  <text x="488" y="470" class="pin">collector → J1 → DOUT</text>
+  <text x="488" y="486" class="pin">4.7k pull-up collector → 5V</text>
+  <text x="488" y="502" class="s">inverting: handled in firmware</text>
+  <rect x="600" y="520" width="40" height="22" class="box" fill="#ffe9a8"/>
+  <text x="606" y="536" class="pin">J1</text>
+  <line x1="620" y1="510" x2="620" y2="520" class="sig"/>
+  <line x1="620" y1="542" x2="620" y2="595" class="sig"/>
+  <text x="648" y="536" class="s">J1 open = SNIFF (console drives DOUT)</text>
+  <text x="648" y="550" class="s">J1 closed = DRIVE (console unplugged!)</text>
+  <line x1="930" y1="440" x2="670" y2="440" class="sig" marker-end="url(#arr)"/>
+  <text x="760" y="435" class="s">GPIO27 PWM (LEDC)</text>
+
+  <!-- speed branch: divider -->
+  <line x1="480" y1="630" x2="480" y2="408" class="w" stroke="#e0c020"/>
+  <rect x="440" y="380" width="80" height="28" class="box"/>
+  <text x="446" y="399" class="pin">10k series</text>
+  <line x1="480" y1="380" x2="480" y2="290" class="sig"/>
+  <line x1="480" y1="290" x2="930" y2="290" class="sig" marker-end="url(#arr)"/>
+  <text x="600" y="285" class="s">speed pulses (pull-up in ESP32 on)</text>
+  <line x1="480" y1="330" x2="420" y2="330" class="sig"/>
+  <rect x="390" y="316" width="30" height="28" class="box"/>
+  <text x="392" y="335" class="pin">15k</text>
+  <line x1="390" y1="330" x2="384" y2="330" class="sig"/>
+  <text x="384" y="360" class="pin">GND</text>
+  <line x1="480" y1="665" x2="480" y2="700" class="w" stroke="#222"/>
+  <text x="392" y="712" class="s">yellow/black: one is GND → ESP32 GND, the other is speed → 10k/15k divider (which is which: session 3)</text>
+  <!-- ===== Zone: ESP32 ===== -->
+  <rect x="930" y="80" width="290" height="400" class="zone"/>
+  <text x="942" y="102" class="h">ESP32 DevKit (classic)</text>
+  <rect x="950" y="120" width="250" height="340" class="box"/>
+  <text x="960" y="140" class="pin">5V/VIN   ← D1 (machine 5 V)</text>
+  <text x="960" y="160" class="pin">GND      ↔ machine GND</text>
+  <text x="960" y="205" class="pin">GPIO34   ADC A: supply monitor</text>
+  <text x="960" y="225" class="pin">GPIO35/32/33 ADC B/C/D spare</text>
+  <text x="960" y="295" class="pin">GPIO26   speed input (PCNT/ISR)</text>
+  <text x="960" y="335" class="pin">GPIO25   DOUT capture (MCPWM)</text>
+  <text x="960" y="375" class="pin">GPIO16   UART2 RX sniff (opt.)</text>
+  <text x="960" y="445" class="pin">GPIO27   PWM out → Q1 base</text>
+  <text x="960" y="400" class="pin">GPIO2    heartbeat LED</text>
+  <text x="960" y="418" class="s">USB: serial console 115200, flashing</text>
+
+  <!-- phone -->
+  <rect x="950" y="530" width="250" height="90" class="box"/>
+  <text x="960" y="552" class="t">Smartphone / app</text>
+  <text x="960" y="570" class="s">Bluetooth LE FTMS (Cross Trainer)</text>
+  <text x="960" y="586" class="s">set level 1–16, read cadence,</text>
+  <text x="960" y="602" class="s">computed watts</text>
+  <path d="M1075 460 C1075 490 1075 500 1075 530" class="sig" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+  <text x="1085" y="500" class="s">BLE</text>
+
+  <!-- legend -->
+  <rect x="950" y="640" width="250" height="80" class="box" fill="#fafafa"/>
+  <text x="960" y="658" class="t">Rules</text>
+  <text x="960" y="674" class="s">• nothing above 3.3 V on an ESP32 pin</text>
+  <text x="960" y="688" class="s">• one GND for machine + ESP32</text>
+  <text x="960" y="702" class="s">• console OR J1, never both</text>
+  <text x="960" y="716" class="s">• [assumption] items: verify in session 3/4</text>
+</svg>
