@@ -65,7 +65,9 @@ int  probe_uart_take(uint8_t *buf, int max, uint32_t *total);
 
 // ---- PWM out (replay test) ----
 void pwm_out_init(void);
-void pwm_out_set(uint32_t freq_hz, float duty_pct); // freq 0 = off
+void pwm_out_set(uint32_t freq_hz, float duty_pct); // freq 0 = off; duty is the duty wanted on DOUT
+void pwm_out_set_inverted(bool inv);                // true when an inverting transistor stage sits on the output
+bool pwm_out_inverted(void);
 void pwm_out_get(uint32_t *freq_hz, float *duty_pct);
 
 // ---- console / reporting ----

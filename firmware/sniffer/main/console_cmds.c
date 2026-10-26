@@ -45,10 +45,17 @@ static int cmd_pwm(int argc, char **argv)
 {
     if (argc < 2) {
         uint32_t f; float d; pwm_out_get(&f, &d);
-        printf("pwm out on GPIO%d: %lu Hz %.2f %%  usage: pwm <freq_hz> <duty_pct> | pwm off\n", PIN_PWM_OUT, (unsigned long)f, d);
+        printf("pwm out on GPIO%d: %lu Hz %.2f %% inv=%d  usage: pwm <freq_hz> <duty_pct> | pwm off | pwm inv on|off\n",
+               PIN_PWM_OUT, (unsigned long)f, d, pwm_out_inverted());
         return 0;
     }
     if (!strcmp(argv[1], "off")) { pwm_out_set(0, 0); return 0; }
+    if (!strcmp(argv[1], "inv")) {
+        if (argc < 3) { printf("usage: pwm inv on|off\n"); return 1; }
+        pwm_out_set_inverted(!strcmp(argv[2], "on"));
+        printf("pwm inverted output %s\n", pwm_out_inverted() ? "on" : "off");
+        return 0;
+    }
     if (argc < 3) { printf("usage: pwm <freq_hz> <duty_pct>\n"); return 1; }
     pwm_out_set((uint32_t)atoi(argv[1]), strtof(argv[2], NULL));
     return 0;
@@ -69,7 +76,7 @@ void console_cmds_register(void)
         { .command = "div",    .help = "div [ratio]  ADC input divider ratio (default 11 = 100k/10k)", .func = cmd_div },
         { .command = "pullup", .help = "pullup on|off  internal pull-up on the speed input", .func = cmd_pullup },
         { .command = "uart",   .help = "uart <baud>|off  sniff serial data on the UART RX pin", .func = cmd_uart },
-        { .command = "pwm",    .help = "pwm <freq> <duty%>|off  PWM output for the replay test", .func = cmd_pwm },
+        { .command = "pwm",    .help = "pwm <freq> <duty%>|off|inv on|off  PWM output for the replay test (duty refers to DOUT)", .func = cmd_pwm },
         { .command = "pins",   .help = "show the pin map", .func = cmd_pins },
     };
     for (size_t i = 0; i < sizeof(cmds) / sizeof(cmds[0]); i++) ESP_ERROR_CHECK(esp_console_cmd_register(&cmds[i]));

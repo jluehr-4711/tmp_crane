@@ -5,14 +5,17 @@
 #include <math.h>
 
 static const char *TAG = "pwm";
-static uint32_t s_freq; static float s_duty;
+static uint32_t s_freq; static float s_duty; static bool s_inv;
+
+void pwm_out_set_inverted(bool inv) { s_inv = inv; if (s_freq) pwm_out_set(s_freq, s_duty); }
+bool pwm_out_inverted(void) { return s_inv; }
 
 void pwm_out_init(void) {}
 
 void pwm_out_set(uint32_t freq_hz, float duty_pct)
 {
     if (freq_hz == 0) {
-        ledc_stop(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, 0);
+        ledc_stop(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, s_inv ? 1 : 0); // idle = DOUT low
         s_freq = 0; s_duty = 0; ESP_LOGI(TAG, "pwm off, GPIO%d low", PIN_PWM_OUT);
         return;
     }
@@ -33,12 +36,13 @@ void pwm_out_set(uint32_t freq_hz, float duty_pct)
     };
     ESP_ERROR_CHECK(ledc_channel_config(&c));
     uint32_t maxd = (1u << res_bits) - 1;
-    uint32_t d = (uint32_t)lroundf(duty_pct / 100.0f * maxd);
+    float eff = s_inv ? 100.0f - duty_pct : duty_pct;   // transistor stage inverts the line
+    uint32_t d = (uint32_t)lroundf(eff / 100.0f * maxd);
     ESP_ERROR_CHECK(ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, d));
     ESP_ERROR_CHECK(ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0));
     s_freq = freq_hz; s_duty = duty_pct;
-    ESP_LOGI(TAG, "pwm %lu Hz %.2f %% (%lu/%lu) on GPIO%d", (unsigned long)freq_hz, duty_pct,
-             (unsigned long)d, (unsigned long)maxd, PIN_PWM_OUT);
+    ESP_LOGI(TAG, "pwm %lu Hz DOUT duty %.2f %% (%lu/%lu on GPIO%d%s)", (unsigned long)freq_hz, duty_pct,
+             (unsigned long)d, (unsigned long)maxd, PIN_PWM_OUT, s_inv ? ", inverted" : "");
 }
 
 void pwm_out_get(uint32_t *f, float *d) { *f = s_freq; *d = s_duty; }
