@@ -11,9 +11,11 @@ Aldi Süd 2006) with an ESP32, while keeping the original console swappable.
 | [04-plan.md](04-plan.md) | Phased plan (wiring first, then software), next concrete steps |
 | [05-open-questions.md](05-open-questions.md) | Questions for the owner + unknowns to measure |
 | [06-photo-guide.md](06-photo-guide.md) | What to photograph before the measurement session, with plain-language locations |
+| [07-sniffer.md](07-sniffer.md) | Sniffer firmware: pin map, dividers, parts list, usage |
 | [sessions/](sessions/) | One log per session, newest last |
 | [reference/](reference/) | Extracted manual text (greppable) |
 | [img/](img/) | Crops and rendered manual pages used by the docs |
+| [../firmware/](../firmware/) | ESP-IDF projects (sniffer) |
 
 ## Conventions
 

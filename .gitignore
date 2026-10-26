@@ -8,3 +8,4 @@ firmware/*/dependencies.lock
 .idea/
 *.swp
 .DS_Store
+firmware/*/sdkconfig
