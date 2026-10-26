@@ -34,6 +34,26 @@ logic analyzer (only a 108 € USB scope), so those come from Amazon.
 
 Alternative for the analyzer: AZ-Delivery "Logic Analyzer 8 CH 24 MHz", 13.99 €, same hardware.
 
+## Conrad (conrad.de) – only useful locally if you are near Wernberg-Köblitz (DE) or Linz (AT)
+Conrad closed its other retail stores (2022/23); everything else is online with parcel delivery.
+Found by search on 2026-10-26; Conrad's site blocks automated access, so prices and in-store stock
+could not be checked. Order numbers are from the product URLs.
+| Qty | Order no. | Item |
+|----:|-----------|------|
+| 2 | 1581828 | TRU Components TC-BC547B, NPN TO-92 |
+| 2 | 155460 | STMicroelectronics 1N5819, Schottky 40 V 1 A, DO-41 |
+| 1 | 84518 | Whadda/Velleman K/RES-E12, 610-piece carbon-film 1/4 W assortment (covers all five values) |
+| 1 | 2574925 | Velleman breadboard, 400 contacts |
+| 1 | 2899209 | TRU Components wire-bridge set, 350 pieces |
+| – | – | pin header 2.54 mm and jumper caps: search "Stiftleiste 2,54 36-polig" / "Kurzschlussbrücke 2,54" |
+| – | – | perfboard: search "Lochrasterplatine Hartpapier 100 x 50" |
+Not at Conrad: JST SM connectors (only PH/XH/ZH series) and the cheap 24 MHz logic analyzer.
+
+## Local shops in general
+Resistors, BC547, 1N5819, pin headers, perfboard and a breadboard are stock items in any electronics
+shop (Pollin in Pförring, Segor in Berlin, Bürklin in Munich, Reichelt in Sande, Conrad Wernberg/Linz).
+The JST SM pigtails and the logic analyzer are practically online-only.
+
 ## Caveats
 - **Connector family:** the machine's plug looks like JST SM (2.5 mm, wire-to-wire, latch) in photo p2,
   but that is a visual guess **[assumption]**. The set is cheap; if it does not mate in session 3, we
