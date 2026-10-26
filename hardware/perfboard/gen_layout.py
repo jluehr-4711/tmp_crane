@@ -26,16 +26,16 @@ components = {
  "R7": ("1k",   [((8,19),"1","Q_B"),((12,19),"2","PWM_OUT")], "axial"),
  "JP1": ("2-pin header + jumper cap (DRIVE enable)", [((7,20),"1","Q_C"),((7,21),"2","DOUT")], "header"),
  # pigtail wires soldered from the top (JST SM cables)
- "J1": ("plug A pigtail (JST SM 4p female)", [((2,17),"green 5V","5V_MACH"),((3,20),"red DOUT","DOUT"),((4,18),"yellow","SPEED"),((5,13),"black","GND")], "wire"),
- "J2": ("console pass-through pigtail (JST SM 4p male)", [((2,18),"green","5V_MACH"),((3,21),"red","DOUT"),((4,19),"yellow","SPEED"),((5,14),"black","GND")], "wire"),
+ "J1": ("plug A pigtail (JST SM 4p female)", [((2,17),"green 5V","5V_MACH"),((3,21),"red DOUT","DOUT"),((4,19),"yellow","SPEED"),((5,13),"black","GND")], "wire"),
+ "J2": ("console pass-through pigtail (JST SM 4p male)", [((2,18),"green","5V_MACH"),((3,22),"red","DOUT"),((4,20),"yellow","SPEED"),((5,14),"black","GND")], "wire"),
 }
 # NOTE on J1/J2 pins 3/4: the schematic calls the yellow wire SPEED and black GND as a working assumption.
-# If session 3 shows it the other way round, swap the yellow and black pigtail wires at (4,18)/(4,19) <-> (5,13)/(5,14).
+# If session 3 shows it the other way round, swap the yellow and black pigtail wires at (4,19)/(4,20) <-> (5,13)/(5,14).
 
 # ---- bottom-side links: straight runs of bare wire or chained solder bridges, (from, to, net) ----
 links = [
  # rails on the left
- ((2,2),(2,18),"5V_MACH"), ((3,4),(3,21),"DOUT"), ((4,5),(4,20),"SPEED"), ((5,6),(5,14),"GND"),
+ ((2,2),(2,18),"5V_MACH"), ((3,4),(3,22),"DOUT"), ((4,5),(4,20),"SPEED"), ((5,6),(5,14),"GND"),
  # 5V to R1 top and D1 anode
  ((2,2),(7,2),"5V_MACH"), ((7,2),(7,3),"5V_MACH"), ((7,2),(9,2),"5V_MACH"),
  # D1 cathode to header 5V

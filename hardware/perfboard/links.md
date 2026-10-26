@@ -3,7 +3,7 @@
 | from | to | net |
 |---|---|---|
 | (2,2) | (2,18) | 5V_MACH |
-| (3,4) | (3,21) | DOUT |
+| (3,4) | (3,22) | DOUT |
 | (4,5) | (4,20) | SPEED |
 | (5,6) | (5,14) | GND |
 | (2,2) | (7,2) | 5V_MACH |
@@ -50,5 +50,5 @@
 | Q1 | BC547, flat side towards the bottom edge (pins C B E left->right) | (7,17) C, (8,17) B, (9,17) E |
 | R7 | 1k | (8,19) 1, (12,19) 2 |
 | JP1 | 2-pin header + jumper cap (DRIVE enable) | (7,20) 1, (7,21) 2 |
-| J1 | plug A pigtail (JST SM 4p female) | (2,17) green 5V, (3,20) red DOUT, (4,18) yellow, (5,13) black |
-| J2 | console pass-through pigtail (JST SM 4p male) | (2,18) green, (3,21) red, (4,19) yellow, (5,14) black |
+| J1 | plug A pigtail (JST SM 4p female) | (2,17) green 5V, (3,21) red DOUT, (4,19) yellow, (5,13) black |
+| J2 | console pass-through pigtail (JST SM 4p male) | (2,18) green, (3,22) red, (4,20) yellow, (5,14) black |
