@@ -1,0 +1,10 @@
+# ESP-IDF
+firmware/*/build/
+firmware/*/sdkconfig.old
+firmware/*/managed_components/
+firmware/*/dependencies.lock
+# editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
