@@ -16,7 +16,8 @@ Aldi Süd 2006) with an ESP32, while keeping the original console swappable.
 | [09-shopping-list.md](09-shopping-list.md) | Parts with Reichelt article numbers and Amazon listings |
 | [sessions/](sessions/) | One log per session, newest last |
 | [reference/](reference/) | Extracted manual text (greppable) |
-| [img/](img/) | Crops, rendered manual pages, and `hardware-setup.svg` (overall wiring diagram) |
+| [img/](img/) | Crops, rendered manual pages, and `adapter-schematic.svg` (KiCad schematic export) |
+| [../hardware/kicad/](../hardware/kicad/) | KiCad schematic of the adapter board + generator script |
 | [../firmware/](../firmware/) | ESP-IDF projects (sniffer) |
 
 ## Conventions

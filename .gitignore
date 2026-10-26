@@ -9,3 +9,7 @@ firmware/*/dependencies.lock
 *.swp
 .DS_Store
 firmware/*/sdkconfig
+hardware/kicad/out/
+hardware/kicad/erc.txt
+hardware/kicad/adapter.png
+hardware/kicad/*-backups/
